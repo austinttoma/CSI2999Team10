@@ -5,7 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import  LoginSignup  from './pages/LoginSignup';
 import ForgotPass from './pages/ForgotPass';
 import Register from './pages/Register';
-
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
           <Register/></Route>
         
         <Route exact path="/home">
-          <home/></Route>  
+          <HomePage/></Route>  
         
       </Switch>
       </BrowserRouter>

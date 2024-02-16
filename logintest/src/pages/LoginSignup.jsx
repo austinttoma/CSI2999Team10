@@ -2,7 +2,7 @@ import React from 'react'
 import './LoginSignup.css'
 import { FaUser, FaLock } from "react-icons/fa";
 
-const LoginSignup = () => {
+function LoginSignup()  {
   return (
     <div className='background'>
     <div className='container'>
