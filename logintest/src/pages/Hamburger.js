@@ -5,8 +5,8 @@ import './Hamburger.css'
 const Hamburger =() => {
 
     const [burger_class, setBurgerClass] = useState("burger-bar unclicked")
-    const [menu_class, setMenuClass] =useState("menu hidden")
-    const[isMenuClicked, setIsMenuClicked] = useState(false)
+    const [menu_class, setMenuClass] = useState("menu hidden")
+    const [isMenuClicked, setIsMenuClicked] = useState(false)
 
     //toggle clicks
     const updateMenu = () => {
@@ -16,6 +16,7 @@ const Hamburger =() => {
         }
         else{
             setBurgerClass("burger-bar unclicked")
+            setMenuClass("menu is hidden")
         }
         setIsMenuClicked(!isMenuClicked)
     }
@@ -30,7 +31,11 @@ const Hamburger =() => {
             </div>
         </nav>
         <div className={menu_class}></div>
-
+        <div className="searchbar">
+          
+          <input type="searchbar"placeholder='Search For Item' required />
+          <FaSearch className='searchIcon'/>
+        </div>
     </div>
   )
 }
