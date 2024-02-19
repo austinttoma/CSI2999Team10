@@ -5,7 +5,6 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import  LoginSignup  from './pages/LoginSignup';
 import ForgotPass from './pages/ForgotPass';
 import Register from './pages/Register';
-import HomePage from './pages/HomePage';
 import Hamburger from './pages/Hamburger';
 
 
