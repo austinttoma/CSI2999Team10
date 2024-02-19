@@ -23,7 +23,7 @@ function App() {
           <Register/></Route>
         
         <Route exact path="/home">
-          <home/></Route>  
+          <Hamburger/></Route>  
         
       </Switch>
       </BrowserRouter>
