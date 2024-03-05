@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/login.css') }}">
+        <title>Register</title>
+    </head>
+<body>
+    <form action='/register' method='POST'>
+            <h1>Register</h1>
+            <div className="inputs">
+             <input type='text' placeholder="E-mail" name ='email'><br>
+             <input type = 'password' placeholder="Password" name ='password'>
+            <input type='submit' placeholder="Submit">
+            <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/login.css') }}">
+        </div>
+    </form>
+</body>
+</html>
