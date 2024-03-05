@@ -54,7 +54,19 @@ def register():
 
 @app.route('/logout')
 def logout():
-    pass
+    session.pop('user')
+    return redirect('/')
+    
+@app.route('/reset', methods=['POST', 'GET'])
+def reset():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        try:
+            auth.send_password_reset_email(email)
+            return redirect('/')
+        except:
+            return 'Failed to reset'
+    return render_template('reset.html')
 
 @app.route('/main')
 def mainpage():
