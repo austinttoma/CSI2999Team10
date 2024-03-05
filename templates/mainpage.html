@@ -1,8 +1,48 @@
-<html>
+<!-- <html>
     <head>
         <title>We Did it!</title>
     </head>
 <body>
     <p>Logout<a href="/logout"> Here </a></p>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hamburger Menu Example</title>
+<style>
+    .menu { display: none; }
+    .menu:checked + .menu-content { display: block; }
+    .hamburger-icon { cursor: pointer; }
+    .menu-content { 
+        display: none; 
+        background-color: #f0f0f0; 
+        padding: 10px; 
+    }
+</style>
+</head>
+<body>
+
+<label for="menu" class="hamburger-icon">☰</label>
+<input type="checkbox" id="menu" class="menu">
+
+<div class="menu-content">
+
+    <!-- <a href="#">Home</a><br>
+    <a href="#">About</a><br>
+    <a href="#">Services</a><br>
+    <a href="#">Contact</a> -->
+    <p>Logout<a href="/logout"> Here </a></p>
+
+</div>
+
+<script>
+
+</script>
+
 </body>
 </html>
