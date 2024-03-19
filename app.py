@@ -1,8 +1,9 @@
 from flask import Flask, session, render_template, request, redirect
 import pyrebase
+import googlemaps
 
 app = Flask(__name__)
-
+gmaps = googlemaps.Client(key='AIzaSyA1iSAck_5NWCRTnAoN8yv6g20Xg4jZZiI')
 config = {
     'apiKey': "AIzaSyD3Ax_l85vk3U5P5h2hAEIWdASguZAHcXs",
     'authDomain': "csi2999team10-f457b.firebaseapp.com",

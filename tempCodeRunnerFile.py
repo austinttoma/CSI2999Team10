@@ -1,2 +1,2 @@
 
-@app.route('/register', methods=['POST'
+        email = request.form.get('email')

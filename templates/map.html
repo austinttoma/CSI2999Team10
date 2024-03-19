@@ -4,22 +4,21 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/login.css') }}">
-        <title>Login</title>
+        <customHeaders>
+            <add name="X-Frame-Options" value="SAMEORIGIN" />
+          </customHeaders>
     </head>
     <body>
-        <form action='/' method='POST'>
-            <h1>Login</h1>
-            
-             <input type='text' placeholder="E-mail" name ='email'><br>
-             <input type = 'password' placeholder="Password" name ='password'>
-            <input type='submit' placeholder="Submit">
-            <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/login.css') }}">
         
-       
-            <p>Dont have an account?<a href="/register"> Register </a></p>
-            <p>Forgot Password? Click<a href="/reset"> Here </a></p>
-    
-        </form>
+        <form action='/map' method='POST'>
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d140833.9436964515!2d-83.16442985006867!3d42.5901966179701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1srecycling%20centers!5e0!3m2!1sen!2sus!4v1710880585476!5m2!1sen!2sus" 
+            width="100%"
+             height="100%" 
+             style="border:0;"
+              allowfullscreen="YES" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
 </body>
 </html>
