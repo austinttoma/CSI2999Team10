@@ -77,12 +77,26 @@
     
     <img src="/static/styles/Recycling-Graphic-591068497.png" alt="Recyling" style="position: absolute;z-index: -1;display: table;margin: auto;justify-content: center;align-content: center;height: 100%;width: 100%;">
     <form action ='/main' method ='POST'></form>
-    <input type='text' placeholder="Search For Recyling Info" name ='search'>
+    <input type='text' placeholder="Search items to learn how to recycle them!" name ='search'>
     <label for="menu" class="hamburger-icon">☰</label>
     <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
     <div class ="container" > <h1>Ready to learn about recycling?</h1>
-        <p style="display: flex;position: absolute;margin-top: 4%;margin-left: 1%;"> ⚫There is an issue with modern day recycling
-      </p>
+        
+        <p style="display: flex;position: absolute;margin-top: 8%;margin-left: 1%; font-size: 32px;width: 70%;font-style: oblique;"> •There is an issue with modern day recycling. Most items you place in the recycling bin, never gets recycled </p>
+        <img src="/static/styles/Landfill_1-1024x683-2926537974.jpg" alt="garbage" style="display: flex;position: absolute;width: 25%;margin-top: 2%;margin-left: 72%;border-radius: 200px;">
+
+        <p style = "display: flex;position: absolute;margin-top: 22%;margin-left: 1%; font-size: 32px;width: 70%;font-style: oblique;">•This app will educate users on recycling regulations through various methods that can be found in the top left menu. </p>
+        <img src="/static/styles/Why-schools-play-a-vital-role-in-teaching-children-about-recycling.jpg" alt="teaching" style="display: flex;position: absolute;width: 25%;margin-top: 20%;margin-left: 72%;border-radius: 200px;">
+        
+        <p style = "display: flex;position: absolute;margin-top: 39%;margin-left: 1%; font-size: 32px;width: 70%;font-style: oblique;">•With this knowledge users will be able to better understand what gets recycled and properly recycle items.</p>
+        <img src="/static/styles/recycle-3.jpg" alt="recycle-3" style="display: flex;position: absolute;width: 25%;margin-top: 35%;margin-left: 72%;border-radius: 200px;">
+        
+        <p style = "display: flex;position: absolute;margin-top: 54%;margin-left: 1%; font-size: 32px;width: 70%;font-style: oblique;">•The more people that learn the basics of recycling has a monumental enviromental impact, as well as economic.</p>
+        <img src="/static/styles/clean-earth.jpg" alt="clean" style="display: flex;position: absolute;width: 25%;margin-top: 53%;margin-left: 72%;border-radius: 200px;">
+        
+        <p style = "display: flex;position: absolute;margin-top: 71%;margin-left: 1%; font-size: 32px;width: 70%;font-style: oblique;">•Our goal is to promote recycling education to make it more accessible in hopes more people will adhere to recycling protocols.</p>
+        <img src="/static/styles/recycle-4.jpg" alt="clean" style="display: flex;position: absolute;width: 25%;margin-top: 65%;margin-left: 72%;border-radius: 200px; scale: 78%;">
+
         <input type="checkbox" id="menu" class="menu">
         <div class="menu-content">
             <p><a href="/map">Recyling Centers Near You</a></p>
