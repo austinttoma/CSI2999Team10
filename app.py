@@ -66,5 +66,23 @@ def reset():
 def mainpage():
     return render_template('mainpage.html')
 
+@app.route('/quizzes', methods=['POST','GET'])
+def quizzes():
+    return render_template('quizzes.html')
+
+
+@app.route('/userfeed', methods=['POST','GET'])
+def userfeed():
+    return render_template('userfeed.html')
+
+@app.route('/map', methods=['POST','GET'])
+def map():
+    return render_template('map.html')
+
+@app.route('/modules', methods=['POST','GET'])
+def modules():
+    return render_template('modules.html')
+
+
 if __name__ == '__main__':
     app.run(port=1111)
