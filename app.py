@@ -12,10 +12,10 @@ config = {
     'messagingSenderId': "639473870266",
     'appId': "1:639473870266:web:a9a97e2ffe8c548f63e983",
     'measurementId': "G-7NCQG5M9FB",
-    'databaseURL': "",
+    'databaseURL': "https://csi2999team10-f457b-default-rtdb.firebaseio.com/",
 }
-
 firebase = pyrebase.initialize_app(config)
+db = firebase.database()
 auth = firebase.auth()
 app.secret_key = 'secret'
 
@@ -86,10 +86,39 @@ def userfeed():
 def map():
     return render_template('map.html')
 
-# Recycle Tracker
-@app.route('/recycletracker', methods=['POST','GET'])
+# Recycle Tracker IN PROGRESS 
+@app.route('/recycletracker', methods=['POST', 'GET'])
 def recycletracker():
-    return render_template('recycletracker.html')
+    user_email = session.get('user')
+    if not user_email:
+        # Redirect to login if no user in session
+        return redirect('/')
+    
+    # Normalize the user email to use as a Firebase database key
+    user_email_key = user_email.replace('.', ',')
+
+    # Reference to the user's recycle count in the database
+    recycle_count_ref = db.child("recycleCounts").child(user_email_key)
+
+    if request.method == 'POST':
+        # Fetch the current count, increment it, and update the database
+        current_count = recycle_count_ref.get().val()
+        if current_count is None:
+            # If the count doesn't exist yet, start with 1
+            new_count = 1
+        else:
+            # If the count exists, increment it
+            new_count = current_count + 1
+        recycle_count_ref.set(new_count)
+    else:
+        # For a GET request, just fetch the current count without incrementing
+        new_count = recycle_count_ref.get().val() or 0
+
+    # Render the template with the current or updated count
+    return render_template('recycletracker.html', count=new_count)
+
+
+
 
 # Teaches User about Recycling
 @app.route('/modules', methods=['POST','GET'])

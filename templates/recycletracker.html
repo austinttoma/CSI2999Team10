@@ -4,11 +4,17 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/login.css') }}">
-        <title>Login</title>
+        <title>Recycle Tracker</title>
     </head>
+
     <body>
-        <h1>recycletracker</h1>
+        <div style = "margin: 20px;">
+            <h1>Recycle Tracker</h1>
+            <p>Total Items Recycled: <strong>{{ count }}</strong></p>
+            <form action="/recycletracker" method="post">
+                <button type = "submit">Recycle another item</button>
+            </form>
+        </div>
     
         
 </body>
