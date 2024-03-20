@@ -1,6 +1,6 @@
 @charset "UTF-8";
-/* Style for the container of each post */
-.post-container {
+/* Style for the container of each postForm */
+.postForm .container {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -8,43 +8,43 @@
     margin-bottom: 20px;
   }
   
-  /* Style for the post title */
-  .post-title {
+  /* Style for the postForm title */
+  .postForm .title {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
   }
   
-  /* Style for the post item */
-  .post-item {
+  /* Style for the postForm item */
+  .postFormForm .item {
     font-size: 16px;
     margin-bottom: 10px;
   }
   
-  /* Style for the post image */
-  .post-image {
+  /* Style for the postForm image */
+  .postForm .image {
     max-width: 100%;
     height: auto;
     margin-bottom: 10px;
   }
   
-  /* Style for the post text */
-  .post-text {
+  /* Style for the postForm text
+  .postForm .text {
     font-size: 14px;
-  }
+  } */
   
-  /* Style for the input field for typing a new post */
-  .post-input {
+  /* Style for the input field for typing a new postForm */
+  /* .postForm .input {
     width: 100%;
     padding: 10px;
     font-size: 14px;
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-  }
+  } */
   
-  /* Style for the button to submit a new post */
-  .post-button {
+  /* Style for the button to submit a new postForm */
+  .postForm .button {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -55,7 +55,7 @@
   }
   
   /* Style for the button hover effect */
-  .post-button:hover {
+  .postForm .button:hover {
     background-color: #0056b3;
   }
   
