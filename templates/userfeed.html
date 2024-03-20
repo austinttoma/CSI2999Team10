@@ -1,4 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UserFeed</title>
+    <style>
+        /* Add your CSS styles here */
+        .post {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .post img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>UserFeed</h1>
 
+<<<<<<< HEAD
 <html>
     
     <head>
@@ -21,5 +44,51 @@
             <p>Forgot Password? Click<a href="/reset"> Here </a></p>
     
         </form>
+=======
+    <!-- Form for creating a new post -->
+    <form id="postForm">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="item">Item:</label><br>
+        <input type="text" id="item" name="item"><br>
+        <label for="photo">Photo:</label><br>
+        <input type="file" id="photo" name="photo"><br>
+        <label for="text">Text:</label><br>
+        <textarea id="text" name="text"></textarea><br>
+        <button type="submit">Post</button>
+    </form>
+
+    <!-- UserFeed section to display posts -->
+    <div id="userFeed"></div>
+
+    <script>
+        // JavaScript code for handling form submission
+        document.getElementById('postForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get form data
+            var title = document.getElementById('title').value;
+            var item = document.getElementById('item').value;
+            var photo = document.getElementById('photo').value;
+            var text = document.getElementById('text').value;
+
+            // Create a new post element
+            var postElement = document.createElement('div');
+            postElement.classList.add('post');
+            postElement.innerHTML = `
+                <h3>${title}</h3>
+                <p><strong>Item:</strong> ${item}</p>
+                <p>${text}</p>
+                <img src="${photo}" alt="Post Photo">
+            `;
+
+            // Append the new post to the userfeed
+            document.getElementById('userFeed').appendChild(postElement);
+
+            // Clear the form fields
+            document.getElementById('postForm').reset();
+        });
+    </script>
+>>>>>>> 868729c345a8e900acfdcbe48b89f7a93c20436f
 </body>
 </html>

@@ -19,10 +19,10 @@ firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
 app.secret_key = 'secret'
 
+
+# Main page used to Login and navigate to Registeration and Reset Password
 @app.route('/', methods=['POST','GET'])
 def index():
-    # if('user' in session):
-    #     return redirect('/main')
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
@@ -34,6 +34,7 @@ def index():
             return 'Failed to login'
     return render_template('home.html')
 
+# Registration Page & Function
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
@@ -47,11 +48,13 @@ def register():
             return 'Failed to login'
     return render_template('register.html')
 
+# Logout redirectory to Login Page
 @app.route('/logout')
 def logout():
     session.pop('user')
     return redirect('/')
-    
+
+# Reset Password  
 @app.route('/reset', methods=['POST', 'GET'])
 def reset():
     if request.method == 'POST':
@@ -63,33 +66,44 @@ def reset():
             return 'Failed to reset'
     return render_template('reset.html')
 
-@app.route('/main',)
+# Main page navigation
+@app.route('/main')
 def mainpage():
-
     return render_template('mainpage.html')
 
+# Quizzes Navigation
 @app.route('/quizzes', methods=['POST','GET'])
 def quizzes():
     return render_template('quizzes.html')
 
-
+# Userfeed Navigation
 @app.route('/userfeed', methods=['POST','GET'])
 def userfeed():
     return render_template('userfeed.html')
 
+# Navigation to the Map showing recycling centers
 @app.route('/map', methods=['POST','GET'])
 def map():
     return render_template('map.html')
 
+# Recycle Tracker
+@app.route('/recycletracker', methods=['POST','GET'])
+def recycletracker():
+    return render_template('recycletracker.html')
+
+# Teaches User about Recycling
 @app.route('/modules', methods=['POST','GET'])
 def modules():
     return render_template('modules.html')
 
+<<<<<<< HEAD
 @app.route('/search', methods=['POST','GET'])
 def search():
     search = request.form['search']
     
     return render_template('search.html')
 
+=======
+>>>>>>> 868729c345a8e900acfdcbe48b89f7a93c20436f
 if __name__ == '__main__':
     app.run(port=1111)
