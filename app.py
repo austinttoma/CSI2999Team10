@@ -63,8 +63,15 @@ def reset():
             return 'Failed to reset'
     return render_template('reset.html')
 
-@app.route('/main')
+@app.route('/main', methods =['POST', 'GET'])
 def mainpage():
+    if request.method == 'POST':
+        searchItem = request.form.get('search')
+        try:
+            search(searchItem)
+            return redirect('/search')
+        except:
+            return redirect('/')
     return render_template('mainpage.html')
 
 @app.route('/quizzes', methods=['POST','GET'])
@@ -83,7 +90,10 @@ def map():
 @app.route('/modules', methods=['POST','GET'])
 def modules():
     return render_template('modules.html')
-
+    
+@app.route('/search', methods=['POST','GET' ])
+def search(string=search_item):
+    return render_template('search.html')
 
 if __name__ == '__main__':
     app.run(port=1111)

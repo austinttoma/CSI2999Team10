@@ -1,2 +1,2 @@
 
-        email = request.form.get('email')
+@app.route('/quizzes', methods=['POST','GET'])
