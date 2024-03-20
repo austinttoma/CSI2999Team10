@@ -88,6 +88,7 @@ def modules():
 @app.route('/search', methods=['POST','GET'])
 def search():
     search = request.form['search']
+    
     return render_template('search.html')
 
 if __name__ == '__main__':
