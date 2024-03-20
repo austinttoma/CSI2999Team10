@@ -1,0 +1,61 @@
+@charset "UTF-8";
+/* Style for the container of each post */
+.post-container {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for the post title */
+  .post-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for the post item */
+  .post-item {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for the post image */
+  .post-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for the post text */
+  .post-text {
+    font-size: 14px;
+  }
+  
+  /* Style for the input field for typing a new post */
+  .post-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  /* Style for the button to submit a new post */
+  .post-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  /* Style for the button hover effect */
+  .post-button:hover {
+    background-color: #0056b3;
+  }
+  

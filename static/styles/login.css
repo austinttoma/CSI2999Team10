@@ -1,11 +1,10 @@
 @charset "UTF-8";
 
 
-
 html {
     display: table;
     margin: auto;
-    display: flex;
+    
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -20,6 +19,8 @@ html {
 body {
     display: table-cell;
     vertical-align: middle;
+    margin-top: 150px;
+    margin-bottom: 150px;
 }
 body{
     width: 420px;
@@ -31,7 +32,9 @@ body{
     padding: 30px 40px;
     justify-content: center;
     align-items: center;
-    background-position: center; 
+    background-position: center;
+    max-height: min-content;
+    height:0% 
 }
 
 h1{
