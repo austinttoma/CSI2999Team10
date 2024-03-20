@@ -96,14 +96,10 @@ def recycletracker():
 def modules():
     return render_template('modules.html')
 
-<<<<<<< HEAD
 @app.route('/search', methods=['POST','GET'])
 def search():
     search = request.form['search']
-    
     return render_template('search.html')
 
-=======
->>>>>>> 868729c345a8e900acfdcbe48b89f7a93c20436f
 if __name__ == '__main__':
     app.run(port=1111)
