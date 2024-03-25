@@ -18,5 +18,34 @@ config = {
 
 }
 
+
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
+db = firebase.database()
+def indexFirebase():
+    # Define the item data
+    item_data_list = [
+        {
+            'name': 'Water bottle',
+            'description': 'Description of Item 1',
+            'price': 10.99,
+            'quantity': 100
+        },
+        {
+            'name': 'Box',
+            'description': 'Description of Item 2',
+            'price': 20.99,
+            'quantity': 200
+        },
+        {
+            'name': 'Water Jug',
+            'description': 'Description of Item 3',
+            'price': 21.99,
+            'quantity': 4200
+        }
+    ]
+    
+    # Push each item data to Firebase
+    for item_data in item_data_list:
+        db.child("items").push(item_data)
+

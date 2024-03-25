@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ item_info.name }}</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>{{ item_info.name }}</h1>
+    <div class="item-info">
+        <p><strong>Description:</strong> {{ item_info.description }}</p>
+        <p><strong>Price:</strong> ${{ item_info.price }}</p>
+        <p><strong>Quantity:</strong> {{ item_info.quantity }}</p>
+        <!-- Add more details as needed -->
+    </div>
+    <a href="/">Back to Search</a>
+</body>
+</html>

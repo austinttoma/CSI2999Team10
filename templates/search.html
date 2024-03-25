@@ -1,4 +1,94 @@
-<html>
-    
-<h1>search WIP</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        html{
+            background: gray;
+            align-content: center;
+            display: flex;
+            justify-content: center;
+            scroll-behavior: auto;
+            width: fit-content;
+            margin: auto;
+        }
+        body{
+            border: 2px black;
+            width: fit-content;
+            background: aliceblue;
+            border-style: solid;
+            border-radius: 9px;
+            padding: 20px
+        }
+        .container{
+            width: 420px;
+            border: 2px solid black;
+            border-radius: 15px;
+            padding: 30px 20px;
+            justify-content: center;
+            align-items: center;
+            background-position: center;
+            max-height: min-content;
+            height:0%;
+            margin-bottom: 10px;
+            list-style: none
+        }
+        h1{
+           
+            justify-content: center;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            text-shadow: 1px 1px 1px green,2px 2px 2px green;
+            letter-spacing: 2px;
+
+        }
+        h2{
+            text-shadow: 1px 1px 1px green,2px 2px 2px green;
+            letter-spacing: 2px;
+            font-size: 28px;
+            justify-content: center;
+            display: flex;
+        }
+        li{
+            font-size: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        a{
+            text-decoration: none;
+        }
+        a:visited{
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        a:hover{
+            text-decoration: underline;
+            color: darkblue;
+        }
+        
+    </style>
+</head>
+<body>
+    <form action ='/info' method ='GET'>
+    <h1>Search Results</h1>
+    <div id="search_results">
+        {% if search_results %}
+            <h2>Results for "{{ search_query }}"</h2>
+        
+                {% for result in search_results %}
+                    <div class="container">
+                        <li><a href="/info/{{ result['id'] }}">{{ result['name'] }}</a></li>
+                    </div>
+                {% endfor %}
+          
+        {% else %}
+            <p>No results found for "{{ search_query }}"</p>
+        {% endif %}
+    </div>
+</form>
+</body>
 </html>

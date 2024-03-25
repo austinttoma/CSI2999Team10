@@ -1,6 +1,8 @@
 from flask import Flask, session, render_template, request, redirect
 import pyrebase
 import googlemaps
+from authentication import indexFirebase
+import Levenshtein
 
 app = Flask(__name__)
 gmaps = googlemaps.Client(key='AIzaSyA1iSAck_5NWCRTnAoN8yv6g20Xg4jZZiI')
@@ -23,6 +25,7 @@ app.secret_key = 'secret'
 # Main page used to Login and navigate to Registeration and Reset Password
 @app.route('/', methods=['POST','GET'])
 def index():
+    #indexFirebase()
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
@@ -125,10 +128,46 @@ def recycletracker():
 def modules():
     return render_template('modules.html')
 
+
 @app.route('/search', methods=['POST','GET'])
 def search():
-    search = request.form['search']
-    return render_template('search.html')
+    if request.method == 'POST':
+        search_query = request.form['search']
+        search_results = perform_search(search_query)
+        return render_template('search.html', search_query=search_query, search_results=search_results)
+    else:
+        return render_template('search.html')
+
+def perform_search(query):
+    #retrieves all the names of items
+    items_ref = db.child("items").order_by_child("name").get()
+    
+    search_results = []
+    max_distance = 3
+    
+    for items in items_ref.each():
+    #test to see if names and the query are similar and if they are add them to the results list
+        item_name = items.val().get('name', '') 
+        distance_to_query = Levenshtein.distance(query.lower(), item_name.lower())
+        if query.lower() in item_name.lower() or distance_to_query <= max_distance:
+            search_results.append({'name': item_name, 'id': items.key()})
+            
+    return search_results
+
+@app.route('/info/<item_id>')
+def show_item_info(item_id):
+    # Retrieve info
+    item_ref = db.child("items").child(item_id).get()
+
+    # Check if item exists
+    if item_ref is not None:
+        item_info = item_ref.val()  
+        return render_template('item.html', item_id=item_id, item_info=item_info)
+    else:
+        return "Item not found", 404
+
+
+  
 
 if __name__ == '__main__':
     app.run(port=1111)
