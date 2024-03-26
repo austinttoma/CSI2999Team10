@@ -27,22 +27,23 @@ def indexFirebase():
     item_data_list = [
         {
             'name': 'Water bottle',
-            'description': 'Description of Item 1',
-            'price': 10.99,
-            'quantity': 100
+            'info': 'Made of PET plastic, widely recyclable in most facilities. However many of these bottles are downsized into one use goods that go straight to landfills.',
+            'bool': 1,
+            
         },
         {
-            'name': 'Box',
-            'description': 'Description of Item 2',
-            'price': 20.99,
-            'quantity': 200
+            'name': 'Cardboard Box',
+            'info': 'Made of cardboard, usually recyclable but check with local facilities.',
+            'bool': 0.5,
+            
         },
         {
-            'name': 'Water Jug',
-            'description': 'Description of Item 3',
-            'price': 21.99,
-            'quantity': 4200
+            'name': 'Styrofoam Cup',
+            'info': 'Made of polystyrene, not recyclable in most facilities.',
+            'bool': 0,
+            
         }
+        
     ]
     
     # Push each item data to Firebase

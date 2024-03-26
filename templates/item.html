@@ -4,16 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ item_info.name }}</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        html{
+            display: table;
+            margin: auto;
+            text-align: center;
+        }
+        .item-info{
+            width: 600px;
+            justify-content: center;
+            vertical-align: middle;
+            display: table-cell;
+            border: 1px solid black;
+            padding: 20px 20px;
+            text-align: left;
+            border-radius: 10px;
+        }   
+        h1{
+            justify-content: center;
+            display: flex;
+        }
+        h2{
+            justify-content: center;
+            display: flex;
+        }
+        .non-recyclable{
+            background-image: url(/static/styles/th-1361726909.jpg);
+            background-size: cover;
+        }
+        
+    </style>
+    
 </head>
 <body>
-    <h1>{{ item_info.name }}</h1>
     <div class="item-info">
-        <p><strong>Description:</strong> {{ item_info.description }}</p>
-        <p><strong>Price:</strong> ${{ item_info.price }}</p>
-        <p><strong>Quantity:</strong> {{ item_info.quantity }}</p>
-        <!-- Add more details as needed -->
+        <a href="/search">Back to Search</a>
+        <h1>{{ item_info.name }}</h1>
+        {% if item_info.bool == 1 %}
+            <h2 class = "recyclable">This item is fully recyclable!</h2>
+
+        {% elif item_info.bool == 0 %}
+            <h2 class = "non-recycable">This item is NOT recyclable.</h2>
+             
+        {% else %}
+            <h2 class = "partial">This item is partially recyclable.</h2>
+        {% endif %}
+        <p style="width: 600px;"><strong>Description:</strong> {{ item_info.info }}</p>
+       
     </div>
-    <a href="/">Back to Search</a>
 </body>
 </html>

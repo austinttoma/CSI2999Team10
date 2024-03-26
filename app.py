@@ -25,7 +25,10 @@ app.secret_key = 'secret'
 # Main page used to Login and navigate to Registeration and Reset Password
 @app.route('/', methods=['POST','GET'])
 def index():
-    #indexFirebase()
+    #  **************IMPORTANT*********************
+    #indexFirebase() #this is used to initialize the realtime database, if you uncomment this please delete what is in the database otherwise you WILL get duplicates in the database
+    #as well if you are trying to change what is held run to homepage and restart the program as again you WILL get duplicates
+
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
@@ -133,15 +136,15 @@ def modules():
 def search():
     if request.method == 'POST':
         search_query = request.form['search']
-        search_results = perform_search(search_query)
+        search_results = perform_search(search_query) #function call
         return render_template('search.html', search_query=search_query, search_results=search_results)
     else:
         return render_template('search.html')
 
+#actual work and search logic
 def perform_search(query):
     #retrieves all the names of items
     items_ref = db.child("items").order_by_child("name").get()
-    
     search_results = []
     max_distance = 3
     
@@ -156,10 +159,9 @@ def perform_search(query):
 
 @app.route('/info/<item_id>')
 def show_item_info(item_id):
-    # Retrieve info
+    #getting item based of its item_id
     item_ref = db.child("items").child(item_id).get()
-
-    # Check if item exists
+    #routing to info page with all of the items information from database
     if item_ref is not None:
         item_info = item_ref.val()  
         return render_template('item.html', item_id=item_id, item_info=item_info)

@@ -69,10 +69,28 @@
             text-decoration: underline;
             color: darkblue;
         }
+        .search{
+            width: 420px;
+            background: lightgrey;
+            outline: none;
+            border: 2px solid rgba(255, 255, 255, .2);
+            font-size: 16px;
+            color: black;
+            border-radius: 25px;
+            padding: 20px 45px 20px 20px;
+            margin-left: 26%;
+            font-weight: bold;
+            height: 10px;
+            }
+        
         
     </style>
 </head>
 <body>
+    <form action ='/search' method ='POST'>
+        <input type='text' placeholder="Search Again!" name ='search' style="border-radius: 25px;background: lightgrey;border: 1px solid black;padding: 20px 45px 20px 20px;font-weight: bold;height: 10px;font-size: 16px;">
+        <input type='submit' placeholder="Submit" style="width: 163px;border-radius: 25px;height: 47.5px;font-size: 16px;background: lightgrey;border: 1px solid black;">
+    </form>
     <form action ='/info' method ='GET'>
     <h1>Search Results</h1>
     <div id="search_results">
