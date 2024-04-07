@@ -6,9 +6,10 @@
     <title>{{ item_info.name }}</title>
     <style>
         html{
-            display: table;
+            display: flex;
             margin: auto;
             text-align: center;
+            justify-content: center;
         }
         .item-info{
             width: 600px;
@@ -19,20 +20,34 @@
             padding: 20px 20px;
             text-align: left;
             border-radius: 10px;
+            background: white;
         }   
         h1{
             justify-content: center;
             display: flex;
+            letter-spacing: 1px;
         }
         h2{
             justify-content: center;
             display: flex;
+            letter-spacing: 1px;
         }
         .non-recyclable{
             background-image: url(/static/styles/th-1361726909.jpg);
             background-size: cover;
         }
-        
+        .recyclable{
+            color: green;
+            text-decoration: underline;
+        }
+        .non-recyclable{
+            color: red;
+            text-decoration: underline;
+        }
+        .partial{
+            color: orange;
+            text-decoration: underline;
+        }
     </style>
     
 </head>
@@ -42,12 +57,15 @@
         <h1>{{ item_info.name }}</h1>
         {% if item_info.bool == 1 %}
             <h2 class = "recyclable">This item is fully recyclable!</h2>
+            <html style= "background-image: url(/static/styles/Recycling-Graphic-591068497.png);background-size: cover;"></html>
 
         {% elif item_info.bool == 0 %}
             <h2 class = "non-recycable">This item is NOT recyclable.</h2>
+            <html style = "background-image: url(/static/styles/perth-landfill-australia-2382029939.jpg);background-size: cover;"></html>
              
         {% else %}
             <h2 class = "partial">This item is partially recyclable.</h2>
+            <html style = "background-image: url(/static/styles/Recycling-Graphic-591068497.png);background-size: cover;"></html>
         {% endif %}
         <p style="width: 600px;"><strong>Description:</strong> {{ item_info.info }}</p>
        

@@ -26,7 +26,7 @@ app.secret_key = 'secret'
 @app.route('/', methods=['POST','GET'])
 def index():
     #  **************IMPORTANT*********************
-    #indexFirebase() #this is used to initialize the realtime database, if you uncomment this please delete what is in the database otherwise you WILL get duplicates in the database
+    indexFirebase() #this is used to initialize the realtime database, if you uncomment this please delete what is in the database otherwise you WILL get duplicates in the database
     #as well if you are trying to change what is held run to homepage and restart the program as again you WILL get duplicates
 
     if request.method == 'POST':
