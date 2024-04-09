@@ -83,6 +83,10 @@ def mainpage():
 def quizzes():
     return render_template('quizzes.html')
 
+@app.route('/quiz0')
+def quiz_0_page():
+    return render_template('quiz0.html')
+
 # Userfeed Navigation
 @app.route('/userfeed', methods=['POST','GET'])
 def userfeed():
@@ -135,6 +139,9 @@ def recycletracker():
 def modules():
     return render_template('modules.html')
 
+@app.route('/module0')
+def module_0_page():
+    return render_template('module0.html')
 
 @app.route('/search', methods=['POST','GET'])
 def search():

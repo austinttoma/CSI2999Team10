@@ -3,23 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Main Page</title>
+<title>Quizzes</title>
 <style>
     .container {
-    /* padding: -10px; */
-    width: 50%;
-    height: 100vh;
-    margin: 0 auto;
-    background-size: cover;
-    border-radius: 25px;
-    backdrop-filter: blur(45px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-    display: flex;
+        width: 50%;
+        height: 100vh;
+        margin: 0 auto;
+        background-size: cover;
+        border-radius: 25px;
+        backdrop-filter: blur(45px);
+        box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     h1{
         margin-left: 2%;
-
-
+        margin-bottom: 20px; 
         display: flex;
     }
     .menu { display: none; }
@@ -42,23 +42,16 @@
    
     body {
         font-family: "Dosis" , sans-serif ;
-
-
         margin: auto;
         background-size: cover;
-       
-     
     }
     input{
-        /* z-index: +1; */
         position: absolute;
         width: 100%;
         height: 50px;
         align-items: center;
         margin: 25px 0;
         margin-left: 0px;
-
-
     }
 
 
@@ -66,7 +59,6 @@
         width: 45%;
         background: lightgrey;
         outline: none;
-        /* border: 2px solid rgba(255, 255, 255, .2); */
         font-size: 16px;
         color: black;
         border-radius: 25px;
@@ -74,8 +66,24 @@
         margin-left: 26%;
         font-weight: bold;
         height: 10px;
+    }
 
 
+    /* Style for buttons */
+    .quiz-button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 25px 60px; 
+        text-align: left;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px; 
+        margin: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        width: 96%; 
+        max-width: none; 
     }
 
 
@@ -84,121 +92,19 @@
 <body>
    
     <img src="/static/styles/Recycling-Graphic-591068497.png" alt="Recyling" style="position: absolute;z-index: -1;display: table;margin: auto;justify-content: center;align-content: center;height: 100%;width: 100%;">
-    <!-- <form action ='/search' method ='POST'>
-        <input type='text' placeholder="Search items to learn how to recycle them!" name ='search'>
-        <input type='submit' placeholder="Submit" style="width: 10%; margin-left: 75%;justify-content: center;text-align: center !important;display: flex;align-items: center;position: absolute;height: 5%;padding: inherit;">
-    </form> -->
-    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/modules.css') }}">
-
-    <div class ="container" > <h1>Quiz</h1>
-<div style='transform: scale(0.65); position: relative; top: -100px;font-size: 35px;'>
-  <h3>The term "recycling" is misleading and a form of greenwashing.</h3>
-  <p>Choose 1 option</p>
-  <hr />
-
-  <div id='block-11' style='padding: 10px;'>
-    <label for='option-11' style=' padding: 5px; font-size: 20px;'>
-      <input type='radio' name='option-1' value='6/24' id='option-11' style='transform: scale(1.6); margin-right: 10px; vertical-align: middle; margin-top: -2px;' />
-      True</label>
-    <span id='result-11'></span>
-  </div>
-  <hr />
-
-  <div id='block-12' style='padding: 10px;'>
-    <label for='option-12' style=' padding: 5px; font-size: 20px;'>
-      <input type='radio' name='option-1' value='6' id='option-12' style='transform: scale(1.6); margin-right: 10px; vertical-align: middle; margin-top: -2px;' />
-      False</label>
-    <span id='result-12'></span>
-  </div>
-  <hr />
-  
-  <div style=' top: -150px;font-size: 35px;'>
-    <h3>How is plastic often recycled?</h3>
-    <p>Choose 1 option</p>
-    <hr />
-
-    <div id='block-21' style='padding: 10px;'>
-      <label for='option-21' style=' padding: 5px; font-size: 20px;'>
-        <input type='radio' name='option-2' value='6/24' id='option-21' style='transform: scale(1.6); margin-right: 10px; vertical-align: middle; margin-top: -2px;' />
-        In the form of downcycling.</label>
-      <span id='result-21'></span>
+    <form action ='/main' method ='POST'>
+    </form>
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/quizzes.css') }}">
+   
+    <div class ="container" >
+        <h1>Select a Quiz to Test Your Knowledge!</h1>
+        <!-- Buttons for quiz pages -->
+        <div style="text-align: center;"> 
+            <button class="quiz-button" onclick="window.location.href='/quiz0'">Quiz 0: Recycling Basics</button>
+            <button class="quiz-button" onclick="window.location.href='/quiz1'">Quiz 1: Materials Identification</button>
+            <button class="quiz-button" onclick="window.location.href='/quiz2'">Quiz 2: Recycling Best Practices</button>
+        </div>
     </div>
-    <hr />
-
-    <div id='block-22' style='padding: 10px;'>
-      <label for='option-22' style=' padding: 5px; font-size: 20px;'>
-        <input type='radio' name='option-2' value='6' id='option-22' style='transform: scale(1.6); margin-right: 10px; vertical-align: middle; margin-top: -2px;' />
-        In the form of upcycling.</label>
-      <span id='result-22'></span>
-    </div>
-    <hr />
-
-    <div id='block-23' style='padding: 10px;'>
-      <label for='option-23' style=' padding: 5px; font-size: 20px;'>
-        <input type='radio' name='option-2' value='6' id='option-23' style='transform: scale(1.6); margin-right: 10px; vertical-align: middle; margin-top: -2px;' />
-        It is incinerated instead.</label>
-      <span id='result-23'></span>
-    </div>
-    <hr />
-
-  <button type='button' onclick='displayAnswer1()' style='width: 100px; height: 40px; border-radius: 3px; background-color: lightblue; font-weight: 700;'>Submit</button>
-</div>
-<a id='showanswer1'></a>
-<script>
-
-function displayAnswer1() {
-    if (document.getElementById('option-11').checked) {
-      document.getElementById('block-11').style.border = '3px solid limegreen'
-      document.getElementById('result-11').style.color = 'limegreen'
-      document.getElementById('result-11').innerHTML = 'Correct!'
-    }
-    if (document.getElementById('option-12').checked) {
-      document.getElementById('block-12').style.border = '3px solid red'
-      document.getElementById('result-12').style.color = 'red'
-      document.getElementById('result-12').innerHTML = 'Incorrect!'
-      showCorrectAnswer1()
-    }
-
-    if (document.getElementById('option-21').checked) {
-      document.getElementById('block-21').style.border = '3px solid limegreen'
-      document.getElementById('result-21').style.color = 'limegreen'
-      document.getElementById('result-21').innerHTML = 'Correct!'
-    }
-    if (document.getElementById('option-22').checked) {
-      document.getElementById('block-22').style.border = '3px solid red'
-      document.getElementById('result-22').style.color = 'red'
-      document.getElementById('result-22').innerHTML = 'Incorrect!'
-      showCorrectAnswer1()
-    }
-    if (document.getElementById('option-23').checked) {
-      document.getElementById('block-23').style.border = '3px solid red'
-      document.getElementById('result-23').style.color = 'red'
-      document.getElementById('result-23').innerHTML = 'Incorrect!'
-      showCorrectAnswer1()
-    }
-  }
-
-  function showCorrectAnswer1() {
-    if (document.getElementById('showanswer1').childNodes.length === 0) {
-    let showAnswer1 = document.createElement('p')
-    showAnswer1.innerHTML = 'Show Correct Answer'
-    showAnswer1.style.position = 'relative'
-    showAnswer1.style.top = '1.75rem'
-    showAnswer1.style.left = '-30px'; 
-    showAnswer1.style.fontSize = '30px'
-    document.getElementById('showanswer1').appendChild(showAnswer1)
-    showAnswer1.addEventListener('click', () => {
-      document.getElementById('block-11').style.border = '3px solid limegreen'
-      document.getElementById('result-11').style.color = 'limegreen'
-      document.getElementById('result-11').innerHTML = 'Correct!'
-      document.getElementById('block-21').style.border = '3px solid limegreen'
-      document.getElementById('result-21').style.color = 'limegreen'
-      document.getElementById('result-21').innerHTML = 'Correct!'
-      document.getElementById('showanswer1').removeChild(showAnswer1)
-    })
-    }
-  }
-</script>
 
 
 </body>

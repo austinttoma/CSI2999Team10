@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Main Page</title>
+<style>
+    .container {
+    /* padding: -10px; */
+    width: 50%;
+    height: 100vh;
+    margin: 0 auto;
+    background-size: cover;
+    border-radius: 25px;
+    backdrop-filter: blur(45px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    display: flex;
+    }
+    h1{
+        margin-left: 2%;
+
+
+        display: flex;
+    }
+    .menu { display: none; }
+    .menu:checked + .menu-content { display: block; }
+    .hamburger-icon { cursor: pointer; font-size: 60px; padding: 10px;}
+    .menu-content {
+        display: none;
+        border-radius: 25px;
+        backdrop-filter: blur(60px);
+        box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+        padding: 10px;
+        margin-left: -103%;
+        margin-right: 49%;
+        font-size: 20px;
+        font-style: oblique;
+        width: 48%;
+        border-radius: 20px;
+        height: 30%;
+    }
+   
+    body {
+        font-family: "Dosis" , sans-serif ;
+
+
+        margin: auto;
+        background-size: cover;
+       
+     
+    }
+    input{
+        /* z-index: +1; */
+        position: absolute;
+        width: 100%;
+        height: 50px;
+        align-items: center;
+        margin: 25px 0;
+        margin-left: 0px;
+
+
+    }
+
+
+    input{
+        width: 45%;
+        background: lightgrey;
+        outline: none;
+        /* border: 2px solid rgba(255, 255, 255, .2); */
+        font-size: 16px;
+        color: black;
+        border-radius: 25px;
+        padding: 20px 45px 20px 20px;
+        margin-left: 26%;
+        font-weight: bold;
+        height: 10px;
+
+
+    }
+
+
+</style>
+</head>
+<body>
+   
+    <img src="/static/styles/Recycling-Graphic-591068497.png" alt="Recyling" style="position: absolute;z-index: -1;display: table;margin: auto;justify-content: center;align-content: center;height: 100%;width: 100%;">
+    <form action ='/main' method ='POST'>
+        <input type='text' placeholder="Search items to learn how to recycle them!" name ='search'>
+        <input type='submit' placeholder="Submit" style="width: 10%; margin-left: 75%;justify-content: center;text-align: center !important;display: flex;align-items: center;position: absolute;height: 5%;padding: inherit;">
+    </form>
+        <label for="menu" class="hamburger-icon">☰</label>
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/modules.css') }}">
+   
+    <div class ="container" > <h1>Module 0: What really happens to your recycling?</h1>
+   
+    <p style="display: flex;position: absolute;margin-top: 8%;margin-left: 1%; font-size: 32px;width: 100%;font-style: oblique;"> Many of the items you place in the recycling bin, end up in landfills.</p>
+    <p style="display: flex; position: absolute; margin-top: 20%; margin-left: 1%; font-size: 25px; width: 90%; margin-bottom: 40px;">
+        Plastic is, notably, not designed to be recycled.
+    </p>
+    <p style="display: flex; position: absolute; margin-top: 25%; margin-left: 1%; font-size: 25px; width: 90%; margin-bottom: 40px;">
+        After you place plastic in your recycling bin, it gets taken to materials recovery facilities. At the facility, the plastic is sorted by types (bag, bottle, etc.). The plastic, of the same type, is then squashed together in the form of a cube. It is then sent on its way to the next location.
+    </p>
+    <p style="display: flex; position: absolute; margin-top: 40%; margin-left: 1%; font-size: 25px; width: 90%; margin-bottom: 40px;">
+        However, shipped plastic waste rarely gets recycled when it reaches its destination. Rather than be recycled, the plastic is illegally dumped or open burning of plastic takes place.
+    </p>
+    <p style="display: flex; position: absolute; margin-top: 52%; margin-left: 1%; font-size: 25px; width: 90%;">
+        The phrase 'recycling plastic’ can be misleading. If recycling of plastic does happen, you may want to know that what happens is that the plastic actually gets downcycled. That is, a lower quality plastic is made. Oftentimes, manufacturers add a large amount of newly made plastic into the mix of the downgraded plastic to make their final product.
+    </p>
+    <p style="display: flex; position: absolute; margin-top: 70%; margin-left: 1%; font-size: 25px; width: 90%;">
+        Information on this page is from <a href="https://www.plasticpollutioncoalition.org/blog/2022/5/16/what-really-happens-to-your-plastic-recycling"> Plastic Pollution Coalition</a>.
+    </p>
+   
+ 
+        <input type="checkbox" id="menu" class="menu">
+        <div class="menu-content">
+            <p><a href="/map">Recycling Centers In Metro Detroit</a></p>
+            <p><a href="/quizzes">Quizzes</a></p>
+            <p><a href="/modules">Modules</a></p>
+            <p><a href="/userfeed">Userfeed</a></p>
+           
+            <p>Logout<a href="/logout"> Here </a></p>
+           
+        </div>
+</div>
+<script>
+
+
+</script>
+
+
+
+
+</body>
+</html>
+
