@@ -1,11 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/userfeed.css') }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UserFeed</title>
-    <style>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/userfeed.css') }}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UserFeed</title>
+<style>
+     .container {
+    /* padding: -10px; */
+    width: 50%;
+    height: 100vh;
+    margin: 0 auto;
+    background-size: cover;
+    border-radius: 25px;
+    backdrop-filter: blur(45px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    display: flex;
+    }
+    h1{
+        margin-left: 2%;
+
+        display: flex;
+    }
+    .menu { display: none; }
+    .menu:checked + .menu-content { display: block; }
+    .hamburger-icon { cursor: pointer; font-size: 60px; padding: 10px;}
+    .menu-content { 
+        display: none;
+        border-radius: 25px;
+        backdrop-filter: blur(60px);
+        box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+        padding: 10px;
+        margin-left: -103%;
+        margin-right: 49%;
+        font-size: 20px;
+        font-style: oblique;
+        width: 48%;
+        border-radius: 20px;
+        height: 30%;
+    }
+    
+    body {
+        font-family: "Dosis" , sans-serif ;
+
+        margin: auto;
+        background-size: cover;  
+    }
+
+   
         /* Add CSS styles here */
         .post {
             border: 1px solid #ccc;
@@ -36,12 +78,18 @@
             padding: 20px;
             margin-bottom: 20px;
         }
-        
     </style>
 </head>
 <body>
-    <div class ="container">
-    <h1>UserFeed</h1>
+
+    <img src="/static/styles/Recycling-Graphic-591068497.png" alt="Recyling" style="position: absolute;z-index: -1;display: table;margin: auto;justify-content: center;align-content: center;height: 100%;width: 100%;">
+    <form action ='/main' method ='POST'>
+        <!--removed search bar-->
+    </form>
+        <label for="menu" class="hamburger-icon">☰</label>
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/modules.css') }}">
+    
+    <div class ="container"><h1> <!--removed --></h1>
     <!-- Form for creating a new post -->
     <form id="postForm">
         <label for="title">Title:</label><br>
