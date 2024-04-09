@@ -75,7 +75,7 @@ def reset():
 # Main page navigation
 @app.route('/main')
 def mainpage():
-    
+
     return render_template('mainpage.html')
 
 # Quizzes Navigation
@@ -113,23 +113,26 @@ def recycletracker():
                 break
         #if its not in the email db already
         if user_key is None:
-            user_ref = db.child('recycleTrack').push({'email': user_email, 'recycled_items': 0})
+            user_ref = db.child('recycleTrack').push({'email': user_email, 'water_count': 0, 'cans_count': 0})
             user_key = user_ref.key()
     #no emails stored somehow
     else:
-        user_ref = db.child('recycleTrack').push({'email': user_email, 'recycled_items': 0})
-        user_key = user_ref.key()
+        user_ref = db.child('recycleTrack').push({'email': user_email, 'water_count': 0, 'cans_count': 0})
+        user_key = user_ref.key
 
     
-    new_count = recycle_track_ref.val()[user_key].get('recycled_items')
-    
+    water_count = recycle_track_ref.val()[user_key].get('water_count')
+    cans_count = recycle_track_ref.val()[user_key].get('cans_count')
+
     if request.method == 'POST':
-        current_count = recycle_track_ref.val()[user_key].get('recycled_items')
+        recycle_item = request.form['recycle']
+        current_count = recycle_track_ref.val()[user_key].get(recycle_item)
+        new_count = recycle_track_ref.val()[user_key].get(recycle_item)
         new_count = current_count + 1
-        db.child('recycleTrack').child(user_key).update({'recycled_items': new_count})
+        db.child('recycleTrack').child(user_key).update({recycle_item: new_count})
         return redirect(url_for('recycletracker'))
 
-    return render_template('recycletracker.html', new_count=new_count)
+    return render_template('recycletracker.html', water_count=water_count, cans_count=cans_count)
 
 
 
