@@ -1,4 +1,4 @@
-from flask import Flask, session, render_template, request, redirect
+from flask import Flask, session, render_template, request, redirect, url_for
 import pyrebase
 import googlemaps
 from authentication import indexFirebase
@@ -75,6 +75,7 @@ def reset():
 # Main page navigation
 @app.route('/main')
 def mainpage():
+    
     return render_template('mainpage.html')
 
 # Quizzes Navigation
@@ -95,33 +96,36 @@ def map():
 # Recycle Tracker IN PROGRESS 
 @app.route('/recycletracker', methods=['POST', 'GET'])
 def recycletracker():
+    #gets user email and all emails stored in db
     user_email = session.get('user')
-    if not user_email:
-        # Redirect to login if no user in session
-        return redirect('/')
-    
-    # Normalize the user email to use as a Firebase database key
-    user_email_key = user_email.replace('.', ',')
+    recycle_track_ref = db.child('recycleTrack').order_by_child("email").get()
 
-    # Reference to the user's recycle count in the database
-    recycle_count_ref = db.child("recycleCounts").child(user_email_key)
-
-    if request.method == 'POST':
-        # Fetch the current count, increment it, and update the database
-        current_count = recycle_count_ref.get().val()
-        if current_count is None:
-            # If the count doesn't exist yet, start with 1
-            new_count = 1
-        else:
-            # If the count exists, increment it
-            new_count = current_count + 1
-        recycle_count_ref.set(new_count)
+    #checking if there is any emails stored or if user is already stored
+    if recycle_track_ref.each():
+        user_key = None
+        for recycleTrack in recycle_track_ref.each():
+            if user_email == recycleTrack.val().get('email'):
+                user_key = recycleTrack.key()
+                break
+        #if its not in the email db already
+        if user_key is None:
+            user_ref = db.child('recycleTrack').push({'email': user_email, 'recycled_items': 0})
+            user_key = user_ref.key()
+    #no emails stored somehow
     else:
-        # For a GET request, just fetch the current count without incrementing
-        new_count = recycle_count_ref.get().val() or 0
+        user_ref = db.child('recycleTrack').push({'email': user_email, 'recycled_items': 0})
+        user_key = user_ref.key()
 
-    # Render the template with the current or updated count
-    return render_template('recycletracker.html', count=new_count)
+    
+    new_count = recycle_track_ref.val()[user_key].get('recycled_items')
+    
+    if request.method == 'POST':
+        current_count = recycle_track_ref.val()[user_key].get('recycled_items')
+        new_count = current_count + 1
+        db.child('recycleTrack').child(user_key).update({'recycled_items': new_count})
+        return redirect(url_for('recycletracker'))
+
+    return render_template('recycletracker.html', new_count=new_count)
 
 
 
