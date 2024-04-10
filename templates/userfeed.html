@@ -30,6 +30,7 @@
         border: 1px solid #bb2121;
         padding: 10px;
         margin-bottom: 20px;
+        position: relative;
     }
     .post img {
         max-width: 100%;
@@ -46,7 +47,7 @@
         border-radius: 5px;
     }
     button:hover {
-        background-color: #0056b3;
+        background-color: #1daa18;
     }
     .container {
         background-color: #99a09b;
@@ -54,6 +55,28 @@
         border-radius: 5px;
         padding: 20px;
         margin-bottom: 20px;
+    }
+    .likeButton {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+    .likeCount {
+        position: absolute;
+        top: 10px;
+        right: 40px;
+        color: #555;
+    }
+    .commentsSection {
+        margin-top: 20px;
+    }
+    .commentForm input[type="text"] {
+        width: 80%;
+    }
+    .commentForm button {
+        margin-left: 10px;
+        cursor: pointer;
     }
 </style>
 </head>
@@ -74,13 +97,21 @@
             <input type="file" style="max-width: 100%;height: auto;margin-bottom: 10px;" id="photo" name="photo"><br>
             <label for="text">Text:</label><br>
             <textarea id="text" name="text" style="font-size: 14px;"></textarea><br>
-            <button type="submit" style="background-color: #007bff;color: #fff;border: none;padding: 10px 20px;font-size: 16px;cursor: pointer;border-radius: 5px;">Post</button>
+            <button type="submit" style="background-color: #1daa18;color: #fff;border: none;padding: 10px 20px;font-size: 16px;cursor: pointer;border-radius: 5px;">Post</button>
         </form>
     </div>
     <!-- UserFeed section to display posts -->
     <div id="userFeed"></div>
 
     <script>
+        // Load saved posts from localStorage
+        window.addEventListener('load', function() {
+            var savedPosts = JSON.parse(localStorage.getItem('posts')) || [];
+            savedPosts.forEach(function(post) {
+                renderPost(post);
+            });
+        });
+
         // JavaScript code for handling form submission
         document.getElementById('postForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the default form submission
@@ -90,13 +121,36 @@
             var photo = document.getElementById('photo').files[0];
             var text = document.getElementById('text').value;
 
-            // Create a new post element
+            // Create a new post object
+            var newPost = {
+                title: title,
+                photo: photo ? URL.createObjectURL(photo) : null,
+                text: text,
+                likes: 0, // Initialize likes count to 0
+                comments: [] // Initialize comments array
+            };
+
+            // Render the post
+            renderPost(newPost);
+
+            // Save the post to localStorage
+            var savedPosts = JSON.parse(localStorage.getItem('posts')) || [];
+            savedPosts.push(newPost);
+            localStorage.setItem('posts', JSON.stringify(savedPosts));
+
+            // Clear the form fields
+            document.getElementById('postForm').reset();
+        });
+
+        // Function to render a post
+        function renderPost(post) {
             var postElement = document.createElement('div');
             postElement.classList.add('post');
             postElement.innerHTML = `
-                <h3>${title}</h3>
-                <p>${text}</p>
-                <button class="likeButton">Like</button>
+                <h3>${post.title}</h3>
+                <p>${post.text}</p>
+                <span class="likeButton">❤️</span>
+                <span class="likeCount">${post.likes}</span>
                 <div class="commentsSection">
                     <h4>Comments:</h4>
                     <ul class="commentsList"></ul>
@@ -106,45 +160,50 @@
                     </form>
                 </div>
             `;
-            // If a photo was uploaded, append it to the post
-            if (photo) {
+            if (post.photo) {
                 var imgElement = document.createElement('img');
-                imgElement.src = URL.createObjectURL(photo);
+                imgElement.src = post.photo;
                 imgElement.alt = "Post Photo";
                 imgElement.style.maxWidth = "100%";
                 imgElement.style.height = "auto";
                 postElement.appendChild(imgElement);
             }
 
-            // Append the new post to the userfeed
+            // Add event listener for like button
+            var likeButton = postElement.querySelector('.likeButton');
+            likeButton.addEventListener('click', function() {
+                post.likes++;
+                postElement.querySelector('.likeCount').textContent = post.likes;
+            });
+
+            // Add event listener for comment submission
+            var commentForm = postElement.querySelector('.commentForm');
+            commentForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                var commentInput = commentForm.querySelector('.commentInput').value;
+                if (commentInput.trim() !== '') {
+                    post.comments.push(commentInput);
+                    renderComments(post, postElement);
+                    commentForm.reset();
+                }
+            });
+
+            // Render existing comments
+            renderComments(post, postElement);
+
             document.getElementById('userFeed').appendChild(postElement);
-            // Clear the form fields
-            document.getElementById('postForm').reset();
-        });
+        }
 
-        // Like button and comment form functionality
-        document.getElementById('userFeed').addEventListener('click', function(event) {
-            var target = event.target;
-
-            // If a like button is clicked
-            if (target.classList.contains('likeButton')) {
-                target.classList.toggle('liked');
-            }
-
-            // If a comment form is submitted
-            if (target.tagName === 'BUTTON' && target.parentElement.classList.contains('commentForm')) {
-                event.preventDefault(); // Prevent default form submission
-
-                var commentInput = target.parentElement.querySelector('.commentInput').value;
-                var commentList = target.parentElement.parentElement.querySelector('.commentsList');
-
+        // Function to render comments for a post
+        function renderComments(post, postElement) {
+            var commentsList = postElement.querySelector('.commentsList');
+            commentsList.innerHTML = '';
+            post.comments.forEach(function(comment) {
                 var commentElement = document.createElement('li');
-                commentElement.textContent = commentInput;
-                commentList.appendChild(commentElement);
-
-                target.parentElement.reset(); // Clear the comment input field
-            }
-        });
+                commentElement.textContent = comment;
+                commentsList.appendChild(commentElement);
+            });
+        }
     </script>
 </body>
 </html>
