@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quiz 0</title>
+<title>Quiz 2</title>
 <style>
     .container {
     /* padding: -10px; */
     width: 50%;
-    height: 100vh;
+    height: 110vh;
     margin: 0 auto;
     background-size: cover;
     border-radius: 25px;
@@ -151,31 +151,30 @@ function displayAnswer1() {
       document.getElementById('block-11').style.border = '3px solid red'
       document.getElementById('result-11').style.color = 'red'
       document.getElementById('result-11').innerHTML = 'InCorrect!'
+      showCorrectAnswer1()
     }
     if (document.getElementById('option-12').checked) {
       document.getElementById('block-12').style.border = '3px solid limegreen'
       document.getElementById('result-12').style.color = 'limegreen'
       document.getElementById('result-12').innerHTML = 'Correct!'
-      showCorrectAnswer1()
     }
 
     if (document.getElementById('option-21').checked) {
       document.getElementById('block-21').style.border = '3px solid red'
       document.getElementById('result-21').style.color = 'red'
       document.getElementById('result-21').innerHTML = 'Incorrect!'
+      showCorrectAnswer1()
     }
     if (document.getElementById('option-22').checked) {
       document.getElementById('block-22').style.border = '3px solid limegreen'
       document.getElementById('result-22').style.color = 'limegreen'
       document.getElementById('result-22').innerHTML = 'Correct!'
-      showCorrectAnswer1()
     }
 
     if (document.getElementById('option-31').checked) {
       document.getElementById('block-31').style.border = '3px solid limegreen'
       document.getElementById('result-31').style.color = 'limegreen'
       document.getElementById('result-31').innerHTML = 'Correct!'
-      showCorrectAnswer1()
     }
 
     if (document.getElementById('option-32').checked) {
@@ -202,9 +201,9 @@ function displayAnswer1() {
       document.getElementById('block-22').style.border = '3px solid limegreen'
       document.getElementById('result-22').style.color = 'limegreen'
       document.getElementById('result-22').innerHTML = 'Correct!'
-      document.getElementById('block-32').style.border = '3px solid limegreen'
-      document.getElementById('result-32').style.color = 'limegreen'
-      document.getElementById('result-32').innerHTML = 'Correct!'
+      document.getElementById('block-31').style.border = '3px solid limegreen'
+      document.getElementById('result-31').style.color = 'limegreen'
+      document.getElementById('result-31').innerHTML = 'Correct!'
       document.getElementById('showanswer1').removeChild(showAnswer1)
     })
     }

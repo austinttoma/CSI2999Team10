@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quiz 0</title>
+<title>Quiz 1</title>
 <style>
-    .container {
+ .container {
     /* padding: -10px; */
     width: 50%;
     height: 100vh;
@@ -17,6 +17,7 @@
     border:1px solid;
     display: flex;
     }
+    
     h1{
         margin-left: 2%;
 
@@ -134,6 +135,14 @@
     </div>
     <hr />
 
+    <div id='block-24' style='padding: 10px;'>
+      <label for='option-24' style=' padding: 5px; font-size: 20px;'>
+        <input type='radio' name='option-2' value='6' id='option-24' style='transform: scale(1.6); margin-right: 10px; vertical-align: middle; margin-top: -2px;' />
+        Nitrous Oxide</label>
+      <span id='result-24'></span>
+    </div>
+    <hr />
+
   <button type='button' onclick='displayAnswer1()' style='width: 100px; height: 40px; border-radius: 3px; background-color: lightblue; font-weight: 700;'>Submit</button>
 </div>
 <a id='showanswer1'></a>
@@ -162,6 +171,7 @@ function displayAnswer1() {
       document.getElementById('block-21').style.border = '3px solid red'
       document.getElementById('result-21').style.color = 'red'
       document.getElementById('result-21').innerHTML = 'Incorrect!'
+      showCorrectAnswer1()
     }
     if (document.getElementById('option-22').checked) {
       document.getElementById('block-22').style.border = '3px solid red'
@@ -173,8 +183,14 @@ function displayAnswer1() {
       document.getElementById('block-23').style.border = '3px solid limegreen'
       document.getElementById('result-23').style.color = 'limegreen'
       document.getElementById('result-23').innerHTML = 'Correct!'
+    }
+    if (document.getElementById('option-24').checked) {
+      document.getElementById('block-24').style.border = '3px solid red'
+      document.getElementById('result-24').style.color = 'red'
+      document.getElementById('result-24').innerHTML = 'Incorrect!'
       showCorrectAnswer1()
     }
+   
   }
 
   function showCorrectAnswer1() {
@@ -193,7 +209,6 @@ function displayAnswer1() {
       document.getElementById('block-23').style.border = '3px solid limegreen'
       document.getElementById('result-23').style.color = 'limegreen'
       document.getElementById('result-23').innerHTML = 'Correct!'
-      document.getElementById('showanswer1').removeChild(showAnswer1)
     })
     }
   }
