@@ -46,10 +46,12 @@
         <div class = "container">
             <form action="/recycletracker" method="POST">
                 <h1 style="text-shadow: 1px 1px 1px green,2px 2px 2px green;letter-spacing: 2px;font-size: 34px;">Recycle Tracker</h1>
-                <p style="font-size: 22px;">Total Items Recycled: <strong>{{ water_count }}</strong></p>
+                <p style="font-size: 22px;">Water Bottles Recycled: <strong>{{ water_count }}</strong></p>
                     <button type = "submit" name = "recycle" value = "water_count">Recycle Water Bottle</button>
                 <p style="font-size: 22px;">Cans Recycled: <strong>{{cans_count}}</strong> </p> 
                     <button type = "submit" name = "recycle" value = "cans_count">Recycle Aluminum Cans</button>
+                <p style="font-size: 22px;">Paper/Cardboard Recycled: <strong>{{paper_count}}</strong> </p> 
+                    <button type = "submit" name = "recycle" value = "paper_count">Recycle Paper/Cardboard</button>
             </form>
         </div>
     

@@ -26,7 +26,7 @@ app.secret_key = 'secret'
 @app.route('/', methods=['POST','GET'])
 def index():
     #  **************IMPORTANT*********************
-    indexFirebase() #this is used to initialize the realtime database, if you uncomment this please delete what is in the database otherwise you WILL get duplicates in the database
+    #indexFirebase() #this is used to initialize the realtime database, if you uncomment this please delete what is in the database otherwise you WILL get duplicates in the database
     #as well if you are trying to change what is held run to homepage and restart the program as again you WILL get duplicates
 
     if request.method == 'POST':
@@ -119,16 +119,17 @@ def recycletracker():
                 break
         #if its not in the email db already
         if user_key is None:
-            user_ref = db.child('recycleTrack').push({'email': user_email, 'water_count': 0, 'cans_count': 0})
+            user_ref = db.child('recycleTrack').push({'email': user_email, 'water_count': 0, 'cans_count': 0, 'paper_count': 0})
             user_key = user_ref.key()
     #no emails stored somehow
     else:
-        user_ref = db.child('recycleTrack').push({'email': user_email, 'water_count': 0, 'cans_count': 0})
+        user_ref = db.child('recycleTrack').push({'email': user_email, 'water_count': 0, 'cans_count': 0,  'paper_count': 0})
         user_key = user_ref.key
 
     
     water_count = recycle_track_ref.val()[user_key].get('water_count')
     cans_count = recycle_track_ref.val()[user_key].get('cans_count')
+    paper_count = recycle_track_ref.val()[user_key].get('paper_count')
 
     if request.method == 'POST':
         recycle_item = request.form['recycle']
@@ -138,7 +139,7 @@ def recycletracker():
         db.child('recycleTrack').child(user_key).update({recycle_item: new_count})
         return redirect(url_for('recycletracker'))
 
-    return render_template('recycletracker.html', water_count=water_count, cans_count=cans_count)
+    return render_template('recycletracker.html', water_count=water_count, cans_count=cans_count, paper_count=paper_count)
 
 
 
