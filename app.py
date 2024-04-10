@@ -86,6 +86,12 @@ def quizzes():
 @app.route('/quiz0')
 def quiz_0_page():
     return render_template('quiz0.html')
+@app.route('/quiz1')
+def quiz_1_page():
+    return render_template('quiz1.html')
+@app.route('/quiz2')
+def quiz_2_page():
+    return render_template('quiz2.html')
 
 # Userfeed Navigation
 @app.route('/userfeed', methods=['POST','GET'])
@@ -145,6 +151,14 @@ def modules():
 @app.route('/module0')
 def module_0_page():
     return render_template('module0.html')
+
+@app.route('/module1')
+def module_1_page():
+    return render_template('module1.html')
+
+@app.route('/module2')
+def module_2_page():
+    return render_template('module2.html')
 
 @app.route('/search', methods=['POST','GET'])
 def search():

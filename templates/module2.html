@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 2</title>
+<style>
+    .container {
+    /* padding: -10px; */
+    width: 50%;
+    height: 100vh;
+    margin: 0 auto;
+    background-size: cover;
+    border-radius: 25px;
+    backdrop-filter: blur(45px);
+    background: lightgrey;
+    border: 1px solid;
+    display: flex;
+    }
+    h1{
+        margin-left: 2%;
+
+
+        display: flex;
+    }
+
+   
+    body {
+        font-family: "Dosis" , sans-serif ;
+
+
+        margin: auto;
+        background-size: cover;
+    }
+    input{
+        /* z-index: +1; */
+        position: absolute;
+        width: 100%;
+        height: 50px;
+        align-items: center;
+        margin: 25px 0;
+        margin-left: 0px;
+    }
+
+
+    input{
+        width: 45%;
+        background: lightgrey;
+        outline: none;
+        /* border: 2px solid rgba(255, 255, 255, .2); */
+        font-size: 16px;
+        color: black;
+        border-radius: 25px;
+        padding: 20px 45px 20px 20px;
+        margin-left: 26%;
+        font-weight: bold;
+        height: 10px;
+    }
+
+
+</style>
+</head>
+<body>
+   
+    <img src="/static/styles/Recycling-Graphic-591068497.png" alt="Recyling" style="position: absolute;z-index: -1;display: table;margin: auto;justify-content: center;align-content: center;height: 100%;width: 100%;">
+    <form action ='/main' method ='POST'>
+    
+    </form>
+        
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/modules.css') }}">
+   
+    <div class ="container" > <h1>Module 2: Bad Practices in Recycling</h1>
+   
+ <!-- <p style="display: flex;position: absolute;margin-top: 8%;margin-left: 1%; font-size: 32px;width: 100%;font-style: oblique;"> Many of the items you place in the recycling bin, end up in landfills.</p>-->
+    <p style="display: flex; position: absolute; margin-top: 20%; margin-left: 1%; font-size: 25px; width: 90%; margin-bottom: 40px;">
+        Everyone thinks that when they are recycling, they are helping the environment.   </p>
+          <p style="display: flex; position: absolute; margin-top: 25%; margin-left: 1%; font-size: 25px; width: 90%; margin-bottom: 40px;">
+            However, if you are not careful you may not be making such a big impact as you think. In fact, in a government survey it was found that as much as 40% of items in the recycling bin, were not recyclable. The government survey also found that 49% of the respondents did not know that tissue paper could not be recycled. </p>
+                <p style="display: flex; position: absolute; margin-top: 40%; margin-left: 1%; font-size: 25px; width: 90%; margin-bottom: 40px;">
+                    Non-recyclable materials (this can include liquids or plastic bags) may enter the recycling stream. This can cause damage to the recycling machinery, as well as contaminate recyclable materials.</p>
+    <p style="display: flex; position: absolute; margin-top: 70%; margin-left: 1%; font-size: 25px; width: 90%;">
+        Information on this page is from&nbsp;<a href="https://www.todayonline.com/voices/step-up-public-education-recycling-tackle-lack-awareness"> Today Online</a> and&nbsp;<a href="https://www.colorado.edu/ecenter/2022/02/04/challenges-recycling#:~:text=Poor%20recycling%20quality%20due%20to%20lack%20of%20education&text=Non%2Drecyclable%20materials%20entering%20the,they%20throw%20everything%20away%20instead"
+        > University of Colorado Boulder</a> 
+    </p>
+   
+ 
+</div>
+<script>
+
+
+</script>
+
+</body>
+</html>
